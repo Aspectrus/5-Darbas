@@ -2,5 +2,10 @@ cmake_minimum_required(VERSION 3.10)
 project(5_darbas)
 
 set(CMAKE_CXX_STANDARD 11)
-
-add_executable(5_darbas main.cpp)
+add_subdirectory(lib/googletest-master)
+include_directories(lib/googletest-master/googletest/include)
+include_directories(lib/googletest-master/googlemock/include)
+set(SOURCE_FILES  main.cpp Tests/test.cpp)
+set(Headers funkcijos.h swappair.h)
+add_executable(5_darbas ${SOURCE_FILES} ${Headers})
+target_link_libraries(5_darbas gtest gtest_main)
